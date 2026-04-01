@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Derby CRUD — Create, Read, Update, Delete students on Apache Derby embedded database. HBTU Web Tech Assignment."/>
+  <title>Derby CRUD — Alpine WebTech</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="page">
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">🏔️</div>
+        <span class="nav-title">Alpine WebTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="string-ops.html">🔤 String Ops</a></li>
+        <li><a href="math-ops.html">📐 Math Ops</a></li>
+        <li><a href="crud.html" class="active">🗄️ Derby CRUD</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <div class="page-badge badge-blue">🗄️ Feature 3</div>
+        <h1>Derby Database CRUD</h1>
+        <p>Full Create · Read · Update · Delete on Apache Derby via Java Servlet REST API</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:60px;">
+
+      <!-- Stats Bar -->
+      <div class="card" style="margin-bottom:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+          <div class="stats-bar">
+            <div class="stat-item">
+              <div class="stat-val" id="total-count">—</div>
+              <div class="stat-lbl">Total Students</div>
+            </div>
+          </div>
+          <button class="btn btn-outline" onclick="loadStudents()">🔄 Refresh</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start;">
+
+        <!-- CREATE FORM -->
+        <div class="card">
+          <div class="card-title"><span class="ct-icon ct-blue" style="background:var(--blue-dim)">➕</span> Add New Student</div>
+
+          <form onsubmit="createStudent(event)">
+            <div class="form-group">
+              <label class="form-label" for="c-name">Full Name *</label>
+              <input class="form-input" id="c-name" type="text" placeholder="e.g. Rohan Sharma" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-roll">Roll Number *</label>
+              <input class="form-input" id="c-roll" type="text" placeholder="e.g. 2200130100062" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-branch">Branch *</label>
+              <select class="form-select" id="c-branch" required>
+                <option value="">Select Branch</option>
+                <option>CSE</option>
+                <option>CSE (AI & ML)</option>
+                <option>ECE</option>
+                <option>ME</option>
+                <option>CE</option>
+                <option>EEE</option>
+                <option>IT</option>
+                <option>MCA</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-cgpa">CGPA (0 – 10) *</label>
+              <input class="form-input" id="c-cgpa" type="number" min="0" max="10" step="0.01" placeholder="e.g. 8.75" required/>
+            </div>
+            <button class="btn btn-primary btn-block" id="create-btn" type="submit">➕ Add Student</button>
+          </form>
+        </div>
+
+        <!-- READ TABLE -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div class="card" style="padding:0;overflow:hidden;">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Branch</th>
+                    <th>CGPA</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="student-tbody">
+                  <tr><td colspan="6" class="no-data"><span class="spinner"></span> Loading…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-overlay" id="edit-modal" onclick="if(event.target===this)closeEditModal()">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-title" id="edit-modal-title">Edit Student</div>
+        <button class="modal-close" onclick="closeEditModal()">✕</button>
+      </div>
+      <form onsubmit="updateStudent(event)">
+        <div class="form-group">
+          <label class="form-label" for="e-name">Full Name</label>
+          <input class="form-input" id="e-name" type="text" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="e-roll">Roll Number</label>
+          <input class="form-input" id="e-roll" type="text" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="e-branch">Branch</label>
+          <select class="form-select" id="e-branch" required>
+            <option>CSE</option>
+            <option>CSE (AI & ML)</option>
+            <option>ECE</option>
+            <option>ME</option>
+            <option>CE</option>
+            <option>EEE</option>
+            <option>IT</option>
+            <option>MCA</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="e-cgpa">CGPA (0 – 10)</label>
+          <input class="form-input" id="e-cgpa" type="number" min="0" max="10" step="0.01" required/>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:8px;">
+          <button class="btn btn-outline btn-block" type="button" onclick="closeEditModal()">Cancel</button>
+          <button class="btn btn-primary btn-block" id="update-btn" type="submit">💾 Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      Data stored in <span>Apache Derby</span> embedded DB via <span>CrudServlet</span> — HBTU Web Tech Assignment
+    </div>
+  </footer>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="js/config.js"></script>
+<script src="js/crud.js"></script>
+</body>
+</html>

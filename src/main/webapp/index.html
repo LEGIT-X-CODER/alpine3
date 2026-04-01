@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Alpine WebTech — HBTU Assignment: String Operations, Math Operations, and CRUD on Derby DB running on Alpine Linux with Nginx and Apache Tomcat."/>
+  <title>Alpine WebTech — HBTU Web Technology Assignment</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">🏔️</div>
+        <span class="nav-title">Alpine WebTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">🏠 Home</a></li>
+        <li><a href="string-ops.html">🔤 String Ops</a></li>
+        <li><a href="math-ops.html">📐 Math Ops</a></li>
+        <li><a href="crud.html">🗄️ Derby CRUD</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">🇮🇳 HBTU Kanpur — Web Technology Assignment 1</div>
+        <h1>In-House Web Development<br/>on <span>Alpine Linux</span></h1>
+        <p>A fully self-hosted web application running on Alpine Linux VM with Nginx + Apache Tomcat + Derby DB. No third-party APIs. Pure in-house technology.</p>
+
+        <!-- FEATURES GRID -->
+        <div class="features-grid">
+
+          <!-- Feature 1 -->
+          <a href="string-ops.html" class="feat-card">
+            <div class="feat-num">Feature 01</div>
+            <span class="feat-icon">🔤</span>
+            <div class="feat-title">String Operations</div>
+            <div class="feat-desc">Perform powerful string manipulations with instant results and beautiful visualizations.</div>
+            <div class="feat-tags">
+              <span class="tag">Length</span>
+              <span class="tag">Reverse</span>
+              <span class="tag">Palindrome</span>
+              <span class="tag">Initials</span>
+              <span class="tag">Word Count</span>
+              <span class="tag">Toggle Case</span>
+              <span class="tag">Vowels</span>
+              <span class="tag">Concat</span>
+            </div>
+            <span class="btn btn-primary">Try String Ops →</span>
+          </a>
+
+          <!-- Feature 2 -->
+          <a href="math-ops.html" class="feat-card">
+            <div class="feat-num">Feature 02</div>
+            <span class="feat-icon">📐</span>
+            <div class="feat-title">Math Operations</div>
+            <div class="feat-desc">Compute trigonometry, logarithms, factorials, and arithmetic with precision.</div>
+            <div class="feat-tags">
+              <span class="tag">sin / cos / tan</span>
+              <span class="tag">√ sqrt</span>
+              <span class="tag">log / ln</span>
+              <span class="tag">Factorial</span>
+              <span class="tag">+ − × ÷</span>
+              <span class="tag">Power</span>
+              <span class="tag">Modulo</span>
+              <span class="tag">Abs / Ceil</span>
+            </div>
+            <span class="btn btn-primary">Try Math Ops →</span>
+          </a>
+
+          <!-- Feature 3 -->
+          <a href="crud.html" class="feat-card">
+            <div class="feat-num">Feature 03</div>
+            <span class="feat-icon">🗄️</span>
+            <div class="feat-title">Derby Database CRUD</div>
+            <div class="feat-desc">Full Create, Read, Update, Delete operations on Apache Derby embedded database via Java Servlets.</div>
+            <div class="feat-tags">
+              <span class="tag">Create</span>
+              <span class="tag">Read All</span>
+              <span class="tag">Update</span>
+              <span class="tag">Delete</span>
+              <span class="tag">Apache Derby</span>
+              <span class="tag">REST API</span>
+              <span class="tag">Java Servlet</span>
+            </div>
+            <span class="btn btn-primary">Try CRUD Ops →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE INFO -->
+    <section style="padding:48px 0;">
+      <div class="container">
+        <div class="card" style="max-width:760px;margin:0 auto;text-align:center;">
+          <div style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:16px;">🏗️ System Architecture</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--txt2);line-height:2;text-align:left;background:rgba(0,0,0,.3);border-radius:12px;padding:20px;">
+            Client (Browser / Phone)<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;│  HTTP Request<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;▼<br/>
+            <span style="color:var(--saffron)">Nginx (Port 80)</span> — Serves static HTML/CSS/JS<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;│  /api/* → proxy_pass<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;▼<br/>
+            <span style="color:var(--green)">Apache Tomcat (Port 8080)</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;├── StringOpsServlet → /api/string<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;├── MathOpsServlet  → /api/math<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;└── CrudServlet     → /api/students<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│  JDBC<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br/>
+            <span style="color:var(--blue)">Apache Derby (Embedded)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Built with ❤️ for <span>HBTU Kanpur</span> — Web Technology Assignment 1 &nbsp;|&nbsp; Powered by Alpine Linux + Nginx + Tomcat + Derby
+    </div>
+  </footer>
+</div>
+<script src="js/config.js"></script>
+</body>
+</html>

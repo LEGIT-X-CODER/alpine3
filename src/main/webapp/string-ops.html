@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="String Operations — HBTU Web Tech Assignment. Reverse, palindrome, length, initials, word count, toggle case and more."/>
+  <title>String Operations — Alpine WebTech</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="page">
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">🏔️</div>
+        <span class="nav-title">Alpine WebTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="string-ops.html" class="active">🔤 String Ops</a></li>
+        <li><a href="math-ops.html">📐 Math Ops</a></li>
+        <li><a href="crud.html">🗄️ Derby CRUD</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <div class="page-badge badge-saffron">🔤 Feature 1</div>
+        <h1>String Operations</h1>
+        <p>11 string operations powered by Java Servlet backend and Apache Derby</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:60px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+
+        <!-- LEFT: Input + Ops -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <div class="card">
+            <div class="card-title">
+              <span class="ct-icon ct-saffron">✏️</span> Input
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="s1">Primary String (S1)</label>
+              <input class="form-input" id="s1" type="text" placeholder="Enter your string here…" autocomplete="off"/>
+            </div>
+
+            <div class="form-group" id="s2-wrap" style="display:none;">
+              <label class="form-label" for="s2">Second String (S2) — for Concat</label>
+              <input class="form-input" id="s2" type="text" placeholder="Enter second string…" autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
+              <span class="ct-icon ct-saffron">⚡</span> Select Operation
+            </div>
+            <div class="ops-grid" id="ops-grid"></div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" id="run-btn" onclick="runOperation()" disabled>
+            Select an operation
+          </button>
+        </div>
+
+        <!-- RIGHT: Result -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="card">
+            <div class="card-title">
+              <span class="ct-icon ct-saffron">📊</span> Result
+            </div>
+            <div class="result-box" id="result-box">
+              <div class="result-placeholder">Select an operation and click Run</div>
+            </div>
+          </div>
+
+          <!-- Reference Card -->
+          <div class="card">
+            <div class="card-title">
+              <span class="ct-icon ct-saffron">📖</span> Operations Reference
+            </div>
+            <table>
+              <thead><tr><th>Operation</th><th>Example</th><th>Output</th></tr></thead>
+              <tbody>
+                <tr><td>Length</td><td>"hello"</td><td>5</td></tr>
+                <tr><td>Reverse</td><td>"hello"</td><td>"olleh"</td></tr>
+                <tr><td>Palindrome</td><td>"madam"</td><td>✅ YES</td></tr>
+                <tr><td>Concat</td><td>"Hi"+"World"</td><td>"HiWorld"</td></tr>
+                <tr><td>Initials</td><td>"John Doe"</td><td>"JD"</td></tr>
+                <tr><td>Word Count</td><td>"one two three"</td><td>3</td></tr>
+                <tr><td>Toggle Case</td><td>"Hello"</td><td>"hELLO"</td></tr>
+                <tr><td>Vowels</td><td>"education"</td><td>5</td></tr>
+                <tr><td>Consonants</td><td>"education"</td><td>4</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      String ops processed by <span>Java Servlet</span> on Apache Tomcat — HBTU Web Tech Assignment
+    </div>
+  </footer>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="js/config.js"></script>
+<script src="js/string-ops.js"></script>
+</body>
+</html>

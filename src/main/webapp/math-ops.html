@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Math Operations — sin, cos, tan, sqrt, log, factorial, arithmetic. HBTU Web Tech Assignment."/>
+  <title>Math Operations — Alpine WebTech</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="page">
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">🏔️</div>
+        <span class="nav-title">Alpine WebTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="string-ops.html">🔤 String Ops</a></li>
+        <li><a href="math-ops.html" class="active">📐 Math Ops</a></li>
+        <li><a href="crud.html">🗄️ Derby CRUD</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <div class="page-badge badge-green">📐 Feature 2</div>
+        <h1>Math Operations</h1>
+        <p>16 mathematical functions — trig, logs, factorial, arithmetic. Computed server-side by Java Servlet.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:60px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+
+        <!-- LEFT -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="card">
+            <div class="card-title"><span class="ct-icon ct-green">🔢</span> Input Values</div>
+
+            <div class="form-group">
+              <label class="form-label" id="a-label" for="a-val">Value A</label>
+              <input class="form-input" id="a-val" type="number" step="any" placeholder="e.g. 30"/>
+            </div>
+
+            <div class="form-group" id="b-wrap" style="display:none;">
+              <label class="form-label" for="b-val">Value B</label>
+              <input class="form-input" id="b-val" type="number" step="any" placeholder="e.g. 5"/>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="ct-icon ct-green">⚙️</span> Select Operation</div>
+            <div class="ops-grid" id="math-ops-grid"></div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" id="math-run-btn" onclick="runMathOp()" disabled>
+            Select an operation
+          </button>
+        </div>
+
+        <!-- RIGHT -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="card">
+            <div class="card-title"><span class="ct-icon ct-green">📊</span> Result</div>
+            <div class="result-box" id="math-result-box">
+              <div class="result-placeholder">Select an operation and enter values</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="ct-icon ct-green">📖</span> Quick Reference</div>
+            <table>
+              <thead><tr><th>Operation</th><th>Input(s)</th><th>Note</th></tr></thead>
+              <tbody>
+                <tr><td>sin / cos / tan</td><td>A (degrees)</td><td>sin(30°) = 0.5</td></tr>
+                <tr><td>√ sqrt</td><td>A ≥ 0</td><td>√16 = 4</td></tr>
+                <tr><td>ln</td><td>A &gt; 0</td><td>Natural log</td></tr>
+                <tr><td>log₁₀</td><td>A &gt; 0</td><td>log₁₀(100) = 2</td></tr>
+                <tr><td>|abs|</td><td>A</td><td>|-5| = 5</td></tr>
+                <tr><td>n!</td><td>A = 0–20</td><td>5! = 120</td></tr>
+                <tr><td>A + B</td><td>A, B</td><td>Arithmetic</td></tr>
+                <tr><td>A ^ B</td><td>A, B</td><td>2^10 = 1024</td></tr>
+                <tr><td>A mod B</td><td>A, B≠0</td><td>17 mod 5 = 2</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Math computed by <span>Java Servlet (MathOpsServlet)</span> using java.lang.Math — HBTU Assignment
+    </div>
+  </footer>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="js/config.js"></script>
+<script src="js/math-ops.js"></script>
+</body>
+</html>

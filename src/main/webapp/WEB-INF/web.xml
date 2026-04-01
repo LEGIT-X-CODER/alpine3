@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+  <display-name>Alpine WebTech — HBTU Assignment</display-name>
+  <description>Q1 Features: String Ops, Math Ops, Derby CRUD</description>
+
+  <!-- Global CORS Filter -->
+  <filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>com.alpine.CorsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- String Operations Servlet -->
+  <servlet>
+    <servlet-name>StringOpsServlet</servlet-name>
+    <servlet-class>com.alpine.StringOpsServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StringOpsServlet</servlet-name>
+    <url-pattern>/api/string</url-pattern>
+  </servlet-mapping>
+
+  <!-- Math Operations Servlet -->
+  <servlet>
+    <servlet-name>MathOpsServlet</servlet-name>
+    <servlet-class>com.alpine.MathOpsServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MathOpsServlet</servlet-name>
+    <url-pattern>/api/math</url-pattern>
+  </servlet-mapping>
+
+  <!-- CRUD Servlet -->
+  <servlet>
+    <servlet-name>CrudServlet</servlet-name>
+    <servlet-class>com.alpine.CrudServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudServlet</servlet-name>
+    <url-pattern>/api/students</url-pattern>
+  </servlet-mapping>
+
+  <!-- CORS and caching defaults -->
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

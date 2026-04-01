@@ -1,0 +1,5 @@
+com\alpine\MathOpsServlet.class
+com\alpine\StringOpsServlet.class
+com\alpine\CorsFilter.class
+com\alpine\CrudServlet.class
+com\alpine\DBUtil.class

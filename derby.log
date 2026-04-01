@@ -1,0 +1,18 @@
+----------------------------------------------------------------
+Wed Apr 01 08:56:20 IST 2026:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-019d-4713-e7d2-00000bcdb120 
+on database directory C:\opt\alpine-webtech\derbydb with class loader ParallelWebappClassLoader
+  context: alpine-webtech
+  delegate: false
+----------> Parent Classloader:
+java.net.URLClassLoader@1ed6993a
+ 
+Loaded from file:/C:/tools/apache-tomcat-10.1.20/webapps/alpine-webtech/WEB-INF/lib/derby-10.16.1.1.jar
+java.vendor=Microsoft
+java.runtime.version=17.0.15+6-LTS
+user.dir=C:\Users\amant\Desktop\alpine\backend
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
